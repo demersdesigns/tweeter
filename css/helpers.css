@@ -1,0 +1,30 @@
+/* =============================================================================
+   Non-semantic helper classes
+   Please define your styles before this section.
+   
+   Heavily edited. Deleted a whole bunch of stuff not necessary for this site.
+   ========================================================================== */
+/* For image replacement */
+.ir {
+  display: block;
+  text-indent: -999em;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  text-align: left;
+  direction: ltr;
+}
+.ir br {
+  display: none;
+}
+/* Contain floats: nicolasgallagher.com/micro-clearfix-hack/ */
+/* Changed clearfix to group because it sounds a tad more semantic. Credit to @simplebits for the idea. */
+.group:before, .group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  zoom: 1;
+}

@@ -1,0 +1,163 @@
+@import url(boilerplate.less);
+/* =========================================================================
+  Primary Styles
+  Author: Paul Demers
+   
+  Table of Contents:
+  //Mixins/Constants
+  //Main Body Tag
+  //Fonts
+  //Grid
+  //Links
+  //Interaction
+  //Images
+  //Layout
+========================================================================== */
+//Mixins/Constants
+@body_text_color: #badcf9;
+
+//Border Radius
+.border_radius(@radius){
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+//Drop Shadows
+.box_shadow(@x: 0px, @y: 0px, @blur: 0px, @r: 0, @g: 0, @b: 0, @a: 0)  {
+  @shadow: @x @y @blur rgba(@r, @g, @b, @a);
+  -webkit-box-shadow: @shadow;
+  -moz-box-shadow: @shadow;
+  box-shadow: @shadow;
+}
+
+//Text Shadows
+.text_shadow(@x: 0px, @y: 0px, @blur: 0px, @r: 0, @g: 0, @b, @a: 0){
+  @shadow: @x @y @blur rgba(@r, @g, @b, @a);
+  text-shadow: @shadow;
+}
+
+//Transitions
+.transition(@type: all, @time: 0.3s){
+  -webkit-transition: @type @time ease-in-out;
+	-moz-transition: @type @time ease-in-out;
+	-o-transition: @type @time ease-in-out;
+	-ms-transition: @type @time ease-in-out;
+	transition: @type @time ease-in-out;
+}
+
+//Main Body Tag
+body{
+  background: #2c2c2c;
+  color: @body_text_color;
+  float: left;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 100%;
+  line-height: 1.375em;
+  width: 100%;
+}
+
+//Fonts
+h1, h2, h3, h4, h5{font-weight: bold;}
+
+h1 {
+  font-size: 1.5em;  /* 24/30 */
+  line-height: 1.25em;
+}
+
+h2 {
+  font-size: 1.375em;  /* 22/28 */
+  line-height: 1.2727273em;
+}
+
+h3 {
+  font-size: 1.25em;/* 20/26 */
+  line-height: 1.3em;
+}
+
+h4{
+  font-size: 1.125em;/* 18/24 */
+  line-height: 1.333333333em;
+}
+
+h5{
+  font-size: 1em;/* 16/22 */
+  line-height: 1.375em;
+}
+
+p{
+  font-size: 0.875em;
+  margin-top: 0;
+}
+
+//GRID
+// Defaults which you can freely override
+@column-width: 60;
+@gutter-width: 20;
+@columns: 12;
+
+// Utility variable - you should never need to modify this
+@_gridsystem-width: (@column-width*@columns) + (@gutter-width*@columns) * 1px;
+
+//Set @total-width to 100% for a fluid layout
+@total-width: 100%;
+
+.row(@columns:@columns){
+	display: inline-block;
+	margin: 0 @total-width*(((@gutter-width*.5)/@_gridsystem-width)*-1);
+	overflow: hidden;
+	width: @total-width*((@gutter-width + @_gridsystem-width)/@_gridsystem-width);
+}
+
+.column(@x,@columns:@columns){
+	display: inline;
+	float: left;
+	margin: 0 @total-width*((@gutter-width*.5)/@_gridsystem-width);
+	overflow: hidden;
+	width: @total-width*((((@gutter-width+@column-width)*@x)-@gutter-width) / @_gridsystem-width);	
+}
+
+//LINKS
+a{
+  color: @body_text_color;
+  .transition();
+
+  &:hover, &:active{color: #fff;}
+}
+//Interaction
+.button{}
+.blue{}
+.round{}
+
+//Images
+.avatar{}
+.sm{}
+.lg{}
+
+//Layout
+#main{
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.wrapper{
+  padding: 10px;
+}
+
+header{}
+header a{}
+header a img{}
+header a h1{}
+
+.admin{}
+.userlist{}
+.selectedUser{}
+
+
+/* ===============
+    ALL: IE Fixes
+   =============== */
+
+@import url(helpers.less);
+@import url(queries.less); 
+@import url(print.less);
