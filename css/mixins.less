@@ -1,0 +1,84 @@
+//Mixins/Constants
+@body_text_color: #c1c1c1;
+@link_color: #3E90D1;
+@link_hover_color: #c1c1c1;
+
+//Border Radius
+.border-radius(@radius){
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.border-single-radius(@tr, @br, @tl, @bl){
+  -webkit-border-top-left-radius: @tl;
+  -webkit-border-bottom-left-radius: @bl;
+  -webkit-border-top-right-radius: @tr;
+  -webkit-border-bottom-right-radius: @br;
+  -moz-border-top-left-radius: @tr;
+  -moz-border-bottom-left-radius: @bl;
+  -moz-border-top-right-radius: @tr;
+  -moz-border-bottom-right-radius: @br;
+  border-top-left-radius: @tl;
+  border-bottom-left-radius: @bl;
+  border-top-right-radius: @tr;
+  border-bottom-right-radius: @br;
+}
+
+//Drop Shadows
+.box-shadow(@x: 0px, @y: 0px, @blur: 0px, @color)  {
+  @shadow: @x @y @blur;
+  -webkit-box-shadow: @shadow @color;
+  -moz-box-shadow: @shadow @color;
+  box-shadow: @shadow @color; 
+}
+
+//Text Shadows
+.text-shadow(@x: 0px, @y: 0px, @blur: 0px, @color){
+  @shadow: @x @y @blur;
+  text-shadow: @shadow @color;
+}
+
+//Transitions
+.transition(@type: all, @time: 0.3s){
+  -webkit-transition: @type @time ease-in-out;
+	-moz-transition: @type @time ease-in-out;
+	-o-transition: @type @time ease-in-out;
+	-ms-transition: @type @time ease-in-out;
+	transition: @type @time ease-in-out;
+}
+
+//Gradients - Based on mixins from Twitter Bootstrap
+.grad-horiz (@startColor: #555, @endColor: #333) {
+  background-color: @endColor;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(left, @startColor, @endColor); // FF 3.6+
+  background-image: -ms-linear-gradient(left, @startColor, @endColor); // IE10
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(left, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(left, @startColor, @endColor); // Opera 11.10
+  background-image: linear-gradient(left, @startColor, @endColor); // Le standard
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=1)",@startColor,@endColor)); // IE9 and down
+}
+.grad-vert (@startColor: #555, @endColor: #333) {
+  background-color: @endColor;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(top, @startColor, @endColor); // FF 3.6+
+  background-image: -ms-linear-gradient(top, @startColor, @endColor); // IE10
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, @startColor), color-stop(100%, @endColor)); // Safari 4+, Chrome 2+
+  background-image: -webkit-linear-gradient(top, @startColor, @endColor); // Safari 5.1+, Chrome 10+
+  background-image: -o-linear-gradient(top, @startColor, @endColor); // Opera 11.10
+  background-image: linear-gradient(top, @startColor, @endColor); // The standard
+  filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",@startColor,@endColor)); // IE9 and down
+}
+
+//Gradient Text - Works nicely in webkit, falls back to start color in other browsers. Also cannot use text-shadow in conjunction with this effect.
+
+.grad-text(@startColor, @endColor){
+color: @startColor;
+background:
+  -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 0 rgba(255,255,255,.25);
+}

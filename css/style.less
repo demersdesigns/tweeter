@@ -13,42 +13,12 @@
   //Images
   //Layout
 ========================================================================== */
-//Mixins/Constants
-@body_text_color: #badcf9;
-
-//Border Radius
-.border_radius(@radius){
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-  border-radius: @radius;
-}
-
-//Drop Shadows
-.box_shadow(@x: 0px, @y: 0px, @blur: 0px, @r: 0, @g: 0, @b: 0, @a: 0)  {
-  @shadow: @x @y @blur rgba(@r, @g, @b, @a);
-  -webkit-box-shadow: @shadow;
-  -moz-box-shadow: @shadow;
-  box-shadow: @shadow;
-}
-
-//Text Shadows
-.text_shadow(@x: 0px, @y: 0px, @blur: 0px, @r: 0, @g: 0, @b, @a: 0){
-  @shadow: @x @y @blur rgba(@r, @g, @b, @a);
-  text-shadow: @shadow;
-}
-
-//Transitions
-.transition(@type: all, @time: 0.3s){
-  -webkit-transition: @type @time ease-in-out;
-	-moz-transition: @type @time ease-in-out;
-	-o-transition: @type @time ease-in-out;
-	-ms-transition: @type @time ease-in-out;
-	transition: @type @time ease-in-out;
-}
+@import url(mixins.less);
 
 //Main Body Tag
 body{
-  background: #2c2c2c;
+  background-color: #2c2c2c;
+  .grad-vert(#444, #666);
   color: @body_text_color;
   float: left;
   font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
@@ -58,36 +28,15 @@ body{
 }
 
 //Fonts
-h1, h2, h3, h4, h5{font-weight: bold;}
-
-h1 {
-  font-size: 1.5em;  /* 24/30 */
-  line-height: 1.25em;
-}
-
-h2 {
-  font-size: 1.375em;  /* 22/28 */
-  line-height: 1.2727273em;
-}
-
-h3 {
-  font-size: 1.25em;/* 20/26 */
-  line-height: 1.3em;
-}
-
-h4{
-  font-size: 1.125em;/* 18/24 */
-  line-height: 1.333333333em;
-}
-
-h5{
-  font-size: 1em;/* 16/22 */
-  line-height: 1.375em;
-}
-
-p{
-  font-size: 0.875em;
-  margin-top: 0;
+@font-face{
+    font-family: 'CreteRoundRegular';
+    src: url('/fonts/CreteRound_Regular.eot');
+    src: url('CreteRound_Regular.eot?#iefix') format('embedded-opentype'),
+         url('/fonts/CreteRound_Regular.woff') format('woff'),
+         url('/fonts/CreteRound_Regular.ttf') format('truetype'),
+         url('/fonts/CreteRound_Regular.svg#CreteRoundRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 //GRID
@@ -119,40 +68,258 @@ p{
 
 //LINKS
 a{
-  color: @body_text_color;
+  color: @link_color;
   .transition();
 
-  &:hover, &:active{color: #fff;}
+  &:hover, &:active{color: @link_hover_color;}
 }
+
 //Interaction
-.button{}
-.blue{}
-.round{}
+input[type=button], .button{
+  border: none;
+  color: #222;
+  cursor: pointer;
+  font-size: 0.9375em;
+  font-weight: 500;
+  padding: 3px 12px;
+  text-decoration: none;
+
+  .border-radius(5px);
+}
+.blue{
+  box-shadow: inset 0 1px 0 0 #4ea7da;
+  text-shadow: 0 -1px 0 #3c8ed0;
+
+  .grad-vert(#3c8ed0, #4ea7da);
+
+  &:hover{
+    color: #222;
+    .grad-vert(#4ea7da, #3c8ed0);
+  }
+  
+  &:active{.grad-vert(#3c8ed0, #4ea7da);}
+}
 
 //Images
-.avatar{}
-.sm{}
-.lg{}
+.avatar{
+  float: left;
+  border: 1px solid #666;
+
+  .border-radius(5px);
+}
+
+.sm{
+margin-right: 5px;
+width: 40px;
+}
+
+.lg{
+margin-right: 10px;
+width: 50px
+}
 
 //Layout
-#main{
-  max-width: 1140px;
+.wrapper{
+  max-width: 940px;
   margin: 0 auto;
 }
 
-.wrapper{
-  padding: 10px;
+header{
+  border-bottom: 1px solid #444;
+  padding: 5px 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  .grad-vert(#333, #111);
 }
 
-header{}
-header a{}
-header a img{}
-header a h1{}
+.branding{.column(6);}
 
-.admin{}
-.userlist{}
-.selectedUser{}
+.branding a{
+  letter-spacing: .05em;
+  text-decoration: none;
+  
+  img{
+    float: left;
+    margin-right: 5px;
+  }
+  
+  h1{
+    float: left;
+    font-family: 'CreteRoundRegular', sans-serif;
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 7px 0 0;
+  }
+}
 
+#content{
+  background-color: #2c2c2c;
+  border: 2px solid #444;
+  margin: 70px auto 20px;
+  padding-bottom: 15px;
+  
+  .box-shadow(0, 0, 25px, rgba(0,0,0,.5);
+  .border-radius(5px);
+}
+
+.admin{
+  border-bottom: 1px solid #444;
+  margin-bottom: 15px;
+  padding: 15px 0;
+
+  
+  .grad-vert(#333, #111);
+  
+}
+
+.admin .user_info{  
+  h1, h2{
+    margin: 0;
+
+    .grad-text(#c1c1c1, #666);
+  }
+  
+  h1{
+    font-size: 1.5em;
+    line-height: 1.25;
+  }
+  
+  h2{
+    font-size: 1.125em;
+    font-weight: normal;
+    line-height: 1.15;
+  }
+
+  .column(6);
+}
+
+.admin .stats{
+  text-align: center;
+  word-wrap:break-word;
+  .grad-text(#c1c1c1, #666);
+  
+  dt{
+    font-family: 'CreteRoundRegular', sans-serif;
+    font-size: 1.5625em;
+    padding: 5px 0;
+  }
+
+  dd{margin: 0;}
+
+  .column(2);
+}
+
+.user_list{
+  background-color: #333;
+  background-color: rgba(255,255,255,.10);
+
+  .column(4);
+  .border-radius(5px);
+  .text-shadow(0, 2px, 0, #111);
+}
+
+.user_list h1{
+  font-family: 'CreteRoundRegular', sans-serif;
+  font-size: 1.25em;
+  font-weight: normal;
+  line-height: .25;
+  padding: 0 2%;
+  text-align: center;
+}
+
+.user_list ul, li{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.users{padding: 2%;}
+
+ul.users li a{
+  border-bottom: 1px solid #111;
+  float: left;
+  padding: 0 2%;
+  text-decoration: none;
+  width: 96%;
+
+  .grad-vert(#333, #222);
+
+  &:hover{
+   .grad-vert(#333, #111); 
+  }
+}
+
+ul.users li:first-child a{
+  .border-single-radius(5px, 0, 5px, 0);
+}
+
+ul.users li:last-child a{
+  border-bottom: none;
+
+  .border-single-radius(0, 5px, 0, 5px);
+}
+
+ul.users .avatar{margin-top: 5px;}
+
+.selected_user{.column(8);}
+
+.user_info_wrap{
+  border: 1px solid #444;
+  margin-bottom: 15px;
+  padding: 15px 0;
+  
+  .border-radius(5px);
+  .grad-vert(#333, #111);
+}
+
+.selected_user .user_info{
+  h1, h2{margin: 0;}
+  
+  h1{
+    font-size: 1.25em;
+    line-height: 1.25;
+  }
+  
+  h2{
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.15;
+  }
+
+  .text-shadow(0, 2px, 0, #111);
+  .column(6);
+}
+
+.selected_user .stats{
+  text-align: center;
+  word-wrap:break-word;
+  
+  dt{
+  font-size: 1em;
+  padding: 0;
+  }
+
+  dd{margin: 0;}
+
+  .column(2);
+}
+
+.latest_tweets{padding: 0;}
+
+.latest_tweets li{
+  border: 1px solid #333;
+  margin-bottom: 7px;
+  padding: 10px;
+  
+  .border-radius(5px);
+  .grad-vert(#333, #222);
+}
+
+.latest_tweets li p{margin: 0;}
+
+.latest_tweets li p.date{font-size: 0.875em;}
 
 /* ===============
     ALL: IE Fixes

@@ -1,5 +1,4 @@
-/* Author: Paul Demers */
-/* A little mojo to ensure that the scaling is adjusted when the iPhone or iPad changes orientation */
+//A little mojo to ensure that the scaling is adjusted when the iPhone or iPad changes orientation */
 if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) {
   var viewportmeta = document.querySelector('meta[name="viewport"]');
   if (viewportmeta) {
