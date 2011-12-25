@@ -182,8 +182,8 @@ input[type=button], .button {
   border: none;
   color: #222;
   cursor: pointer;
+  font-family: 'CreteRoundRegular', sans-serif;
   font-size: 0.9375em;
-  font-weight: 500;
   padding: 3px 12px;
   text-decoration: none;
   -webkit-border-radius: 5px;
@@ -192,7 +192,7 @@ input[type=button], .button {
 }
 .blue {
   box-shadow: inset 0 1px 0 0 #4ea7da;
-  text-shadow: 0 -1px 0 #3c8ed0;
+  text-shadow: 0 1px 0 #ccc;
   background-color: #4ea7da;
   background-repeat: repeat-x;
   background-image: -moz-linear-gradient(top, #3c8ed0, #4ea7da);
