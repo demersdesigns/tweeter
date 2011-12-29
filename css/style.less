@@ -237,25 +237,30 @@ header{
 
 ul.users{padding: 2%;}
 
-ul.users li a{
+ul.users li{
   border-bottom: 1px solid #111;
+  color: @link_color;
+  cursor: pointer;
   float: left;
   padding: 0 2%;
   text-decoration: none;
   width: 96%;
 
   .grad-vert(#333, #222);
+  .transition();
 
-  &:hover{
+  &:hover, &.active{
+    color: @link_hover_color;
+  
    .grad-vert(#333, #111); 
   }
 }
 
-ul.users li:first-child a{
+ul.users li:first-child{
   .border-single-radius(5px, 0, 5px, 0);
 }
 
-ul.users li:last-child a{
+ul.users li:last-child{
   border-bottom: none;
 
   .border-single-radius(0, 5px, 0, 5px);
