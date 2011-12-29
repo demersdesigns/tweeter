@@ -1,63 +1,93 @@
+/* Set the bindings for the UI */
 var viewModel = {
-  appName: 'Tweeted',
+
+  /* Logged In User Bindings */
+  loggedIn_name: ko.observable(""),
+  loggedIn_screen_name: ko.observable(""),
+  loggedIn_profile_image_url: ko.observable(""),
+  loggedIn_followers_count: ko.observable(""),
+  loggedIn_friends_count: ko.observable(""),
+  loggedIn_statuses_count: ko.observable(""),
   
-  //logged in user bindings
-  name: ko.observable(""),
-  screen_name: ko.observable(""),
-  friends_count: ko.observable(""),
-  followers_count: ko.observable(""),
-  statuses_count: ko.observable(""),
-  profile_image_url: ko.observable(""),
+  /* User List Bindings */
+  userList: ko.observableArray([]),
+  currentUser: ko.observable("SlexAxton"), /* Setting a default here so something shows up on page load. */
+  latestTweets: ko.observableArray([]),
   
-  //follower user bindings
-  userList: ko.observableArray([])
-}
+  /* Current User Bindings */
+  current_name: ko.observable(""),
+  current_screen_name: ko.observable(""),
+  current_profile_image_url: ko.observable(""),
+  current_followers_count: ko.observable(""),
+  current_friends_count: ko.observable(""),
+  current_statuses_count: ko.observable("")
+};
+
+/* Get Knockout.js running. */
 ko.applyBindings(viewModel);
 
-//Return the 20 latest friends and populate the userList
-getUserList = function(){
+/* Return the 20 latest friends and populate the userList */
+var getUserList = function(){
   $.getJSON('https://api.twitter.com/1/statuses/friends.json?screen_name=demersdesigns&count=20&callback=?', function(data){
-    
-    //Get latest data first
-    var data = data.reverse();
-    
-    for(i=0, max=data.length; i<max; i++){
-      //Shortcut so we don't have to write data[i] every time
-      var content = data[i];
-      
-      //Clear out any existing data
-      viewModel.userList([]);
-      
-      //Push data into array
-      viewModel.userList.push({
-        name: content.name,
-        screen_name: content.screen_name,
-        friends_count: content.friends_count,
-        followers_count: content.followers_count,
-        statuses_count: content.statuses_count,
-        profile_image_url: content.profile_image_url
-      });
-    }
+    viewModel.userList(data);
   });
-}
+};
 
-//Return logged in user's information
-//Since there is not a login/logout system in this demo, we hardcode the logged in user
-getUserInfo = function(){
+/*
+* Return logged in user's information
+* Since there is not a login/logout system in this demo, we hardcode the logged in user
+*/
+var getLoggedInUser = function(){
   $.getJSON('https://api.twitter.com/1/users/lookup.json?screen_name=demersdesigns&callback=?', function(data){
-
-      var content = data[0];
-      
-      //Push loggeed in user data into model
-        viewModel.name(content.name),
-        viewModel.screen_name(content.screen_name),
-        viewModel.friends_count(content.friends_count),
-        viewModel.followers_count(content.followers_count),
-        viewModel.statuses_count(content.statuses_count),
-        viewModel.profile_image_url(content.profile_image_url)
+    
+    var content = data[0];
+    
+    /* Populate the observables */
+    viewModel.loggedIn_name(content.name);
+    viewModel.loggedIn_screen_name(content.screen_name);
+    viewModel.loggedIn_profile_image_url(content.profile_image_url);
+    viewModel.loggedIn_followers_count(content.followers_count);
+    viewModel.loggedIn_friends_count(content.friends_count);
+    viewModel.loggedIn_statuses_count(content.statuses_count);
   });
-}
+};
 
-//Call the initial functions to get data into the model
-getUserInfo();
+/*
+* When the app user clicks on a name in the userList, the currentUser observable
+* is updated with that user's screen name. 
+*/
+var setScreenName = function(screenName, event) {
+  viewModel.currentUser(screenName);
+  
+  /* Set the active state when the user clicks on one of the items in the userList. */
+  $('.users').find('.active').removeClass('active');
+  $(event.currentTarget).addClass('active');
+};
+
+/*
+* When the currentUser is set via the setScreenName function called by clicking on a user in the userlist, load the 20
+* latest tweets for that user into the latestTweets() observable array.
+*/
+var getLatestTweets = ko.computed(function(){
+  if(this.currentUser()){
+      var currentUser = this.currentUser();
+      
+      $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name='+ currentUser +'&count=20&callback=?', function(data){
+          viewModel.latestTweets(data);
+          
+        var currentUserInfo = data[0].user;
+        
+        /* Populate the observables */
+        viewModel.current_name(currentUserInfo.name);
+        viewModel.current_screen_name(currentUserInfo.screen_name);
+        viewModel.current_profile_image_url(currentUserInfo.profile_image_url);
+        viewModel.current_followers_count(currentUserInfo.followers_count);
+        viewModel.current_friends_count(currentUserInfo.friends_count);
+        viewModel.current_statuses_count(currentUserInfo.statuses_count);
+      });
+  }
+},viewModel);
+
+/* Call the initial functions to get data into the model */
+getLoggedInUser();
 getUserList();
