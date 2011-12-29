@@ -30,60 +30,56 @@
   <div id="content" class="wrapper group">
     <section class="admin group">
       <div class="user_info">
-        <img data-bind="attr:{src: profile_image_url}" class="avatar lg" alt="User Avatar Large" />
-        <h1 data-bind="text: name"></h1>
-        <h2>@<span data-bind="text: screen_name"></span></h2>
+        <img data-bind="attr:{src: loggedIn_profile_image_url}" class="avatar lg" alt="User Avatar Large" />
+        <h1 data-bind="text: loggedIn_name"></h1>
+        <h2>@<span data-bind="text: loggedIn_screen_name"></span></h2>
       </div>
       <dl class="stats">
-        <dt data-bind="text: followers_count"></dt>
+        <dt data-bind="text: loggedIn_followers_count"></dt>
         <dd>followers</dd>
       </dl>
       <dl class="stats">
-        <dt data-bind="text: friends_count"></dt>
+        <dt data-bind="text: loggedIn_friends_count"></dt>
         <dd>following</dd>
       </dl>
       <dl class="stats">
-        <dt data-bind="text: statuses_count"></dt>
+        <dt data-bind="text: loggedIn_statuses_count"></dt>
         <dd>tweets</dd>
       </dl>
-      <!-- <a href="http://www.twitter.com/barackObama" class="button blue round">View on Twitter</a> -->
     </section><!-- admin -->
     <section class="user_list">
-    </form>
       <h1>20 People you follow</h1>
       <ul class="users group" data-bind="foreach: userList">
-        <li>
-          <a href="" class="group">
+        <li data-bind="click: function(data, event){setScreenName(screen_name, event)}" class="group">
             <img data-bind="attr:{src: profile_image_url}" class="avatar sm" alt="User Avatar Small" />
             <p data-bind="text: name"></p>
-          </a>
         </li>
       </ul>
     </section><!-- user_list -->
     <section class="selected_user">
       <div class="user_info_wrap group">
         <div class="user_info">
-          <img src="/images/fb_reasonably_small.png" class="avatar lg" alt="User Avatar Large" />
-          <h1>Barack Obama</h1>
-          <h2>@barackobama</h2>
+          <img data-bind="attr:{src: current_profile_image_url}" class="avatar lg" alt="User Avatar Large" />
+          <h1 data-bind="text: current_name"></h1>
+          <h2>@<span data-bind="text: current_screen_name"></span></h2>
         </div>
         <dl class="stats">
-          <dt>11,639,670</dt>
+          <dt data-bind="text: current_followers_count"></dt>
           <dd>followers</dd>
         </dl>
         <dl class="stats">
-          <dt>684,860</dt>
+          <dt data-bind="text: current_friends_count"></dt>
           <dd>following</dd>
         </dl>
         <dl class="stats">
-          <dt>2,405</dt>
+          <dt data-bind="text: current_statuses_count"></dt>
           <dd>tweets</dd>
         </dl>
       </div>
-      <ul class="latest_tweets">
+      <ul class="latest_tweets" data-bind="foreach: latestTweets">
         <li class="message_block">
-          <p class="message">Writing succinctly yet still getting your point across is an art form. That’s why Twitter can be such a great tool for practicing I like it.</p>
-          <p class="date">December 15, 2011 - 2:15pm<p>
+          <p class="message" data-bind="text: text"></p>
+          <p class="date" xdata-bind="text: tweetCreated"><p>
         </li>
       </ul>
       <input type="button" class="blue fl_right" value="View More on Twitter" />
