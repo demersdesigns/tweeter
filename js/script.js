@@ -10,7 +10,13 @@ if (navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPad/i)) 
 }
 
 $(function(){
+  $(".fancybox").fancybox({
+    autoSize: false,
+    width: '50%',
+    height: '50%'
+  });
 });
+
 
 
 
