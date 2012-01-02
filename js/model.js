@@ -72,7 +72,7 @@ var getLatestTweets = ko.computed(function(){
   if(this.currentUser()){
       var currentUser = this.currentUser();
       
-      $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name='+ currentUser +'&count=20&callback=?', function(data){
+      $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name='+ currentUser +'&count=15&callback=?', function(data){
           viewModel.latestTweets(data);
           
         var currentUserInfo = data[0].user;
