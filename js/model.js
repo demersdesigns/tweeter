@@ -11,7 +11,7 @@ var viewModel = {
   
   /* User List Bindings */
   userList: ko.observableArray([]),
-  currentUser: ko.observable("SlexAxton"), /* Setting a default here so something shows up on page load. */
+  currentUser: ko.observable("wellogic"), /* Setting a default here so something shows up on page load. */
   latestTweets: ko.observableArray([]),
   
   /* Current User Bindings */
