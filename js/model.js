@@ -88,6 +88,12 @@ var getLatestTweets = ko.computed(function(){
   }
 },viewModel);
 
+var setInitialActive = ko.computed(function() {
+  if(viewModel.userList()){
+    $('.user_list ul.users li:first').addClass("active");
+  }
+});
+
 /* Call the initial functions to get data into the model */
 getLoggedInUser();
 getUserList();
