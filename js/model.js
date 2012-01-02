@@ -29,7 +29,7 @@ ko.applyBindings(viewModel);
 /* Return the 20 latest friends and populate the userList */
 var getUserList = function(){
   console.info('Fetching User List');
-  $.getJSON('https://api.twitter.com/1/statuses/friends.json?screen_name=demersdesigns&count=20&callback=?', function(data){
+  $.getJSON('/js/json/friends.json', function(data){
     viewModel.userList(data);
   });
 };
@@ -40,7 +40,7 @@ var getUserList = function(){
 */
 var getLoggedInUser = function(){
   console.info('Fetching The Logged In User');
-  $.getJSON('https://api.twitter.com/1/users/lookup.json?screen_name=demersdesigns&callback=?', function(data){
+  $.getJSON('/js/json/lookup.json', function(data){
     
     var content = data[0];
     
@@ -75,7 +75,7 @@ var getLatestTweets = ko.computed(function(){
   if(this.currentUser()){
       var currentUser = this.currentUser();
       
-      $.getJSON('https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name='+ currentUser +'&count=15&callback=?', function(data){
+      $.getJSON('/js/json/user_timeline_'+ currentUser +'.json', function(data){
           viewModel.latestTweets(data);
           
         var currentUserInfo = data[0].user;
