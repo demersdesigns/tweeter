@@ -8,14 +8,14 @@ About
 This application was produced as a proof of concept and thus has a very limited scope. Here are some of the things that were used in its creation:
 
 The HTML5 and CSS3 are based upon the HTML5 Boilerplate project.
-http://html5boilerplate.com/
++ http://html5boilerplate.com/
  
 CSS was written using the LESS framework and compiled using the LESS.app application.
-Framework: http://lesscss.org/
-Desktop Compiler: http://incident57.com/less/
++ Framework: http://lesscss.org/
++ Desktop Compiler: http://incident57.com/less/
 
 The site is modeled with MVVM in mind and utilizes the Knockout.js framework for local model storage as well as templating.
-http://knockoutjs.com/
++ http://knockoutjs.com/
 
 Author
 -------
