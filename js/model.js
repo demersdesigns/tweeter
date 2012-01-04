@@ -11,7 +11,7 @@ var viewModel = {
   
   /* User List Bindings */
   userList: ko.observableArray([]),
-  currentUser: ko.observable("wellogic"), /* Setting a default here so something shows up on page load. */
+  currentUser: ko.observable(),
   latestTweets: ko.observableArray([]),
   
   /* Current User Bindings */
@@ -31,6 +31,9 @@ var getUserList = function(){
   console.info('Fetching User List');
   $.getJSON('/js/json/friends.json', function(data){
     viewModel.userList(data);
+    
+    /* Set the current user to the first user in the list */
+    viewModel.currentUser(viewModel.userList()[0].screen_name);
   });
 };
 
