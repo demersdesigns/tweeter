@@ -28,7 +28,7 @@ ko.applyBindings(viewModel);
 
 /* Return the 20 latest friends and populate the userList */
 var getUserList = function(){
-  console.info('Fetching User List');
+  //console.info('Fetching User List');
   $.getJSON('/js/json/friends.json', function(data){
     viewModel.userList(data);
     
@@ -42,7 +42,7 @@ var getUserList = function(){
 * Since there is not a login/logout system in this demo, we hardcode the logged in user
 */
 var getLoggedInUser = function(){
-  console.info('Fetching The Logged In User');
+  //console.info('Fetching The Logged In User');
   $.getJSON('/js/json/lookup.json', function(data){
     
     var content = data[0];
@@ -74,7 +74,7 @@ var setScreenName = function(screenName, event) {
 * latest tweets for that user into the latestTweets() observable array.
 */
 var getLatestTweets = ko.computed(function(){
-  console.info('Fetching Selected User Latest Tweets');
+  //console.info('Fetching Selected User Latest Tweets');
   if(this.currentUser()){
       var currentUser = this.currentUser();
       
