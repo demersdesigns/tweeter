@@ -360,7 +360,7 @@ header {
   font-family: 'Titillium', sans-serif;
   font-size: 1.4375em;
   letter-spacing: 0.05em;
-  padding: 10px 0 3px;
+  padding: 10px 0 0;
 }
 .admin .stats dd {
   padding-bottom: 5px;
@@ -541,6 +541,8 @@ ul.users .avatar {
   padding: 0;
 }
 .selected_user .stats dd {
+  font-size: 0.875em;
+  line-height: 1;
   margin: 0;
 }
 .latest_tweets {
