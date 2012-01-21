@@ -161,9 +161,9 @@ body {
   width: 100%;
 }
 @font-face {
-  font-family: 'CreteRoundRegular';
-  src: url('../fonts/CreteRound_Regular.eot');
-  src: url('../CreteRound_Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/CreteRound_Regular.woff') format('woff'), url('../fonts/CreteRound_Regular.ttf') format('truetype'), url('../fonts/CreteRound_Regular.svg#CreteRoundRegular') format('svg');
+  font-family: 'Titillium';
+  src: url('../fonts/TitilliumText22L002.eot');
+  src: url('../fonts/TitilliumText22L002.eot?#iefix') format('embedded-opentype'), url('../fonts/TitilliumText22L002.woff') format('woff'), url('../fonts/TitilliumText22L002.ttf') format('truetype'), url('../fonts/TitilliumText22L002.svg#TitilliumText22L002') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -182,7 +182,7 @@ input[type=button], .button {
   border: none;
   color: #222;
   cursor: pointer;
-  font-family: 'CreteRoundRegular', sans-serif;
+  font-family: 'Titillium', sans-serif;
   font-size: 0.9375em;
   padding: 3px 12px;
   text-decoration: none;
@@ -192,7 +192,6 @@ input[type=button], .button {
 }
 .blue {
   box-shadow: inset 0 1px 0 0 #4ea7da;
-  text-shadow: 0 1px 0 #ccc;
   background-color: #4ea7da;
   background-repeat: repeat-x;
   background-image: -moz-linear-gradient(top, #3c8ed0, #4ea7da);
@@ -278,7 +277,7 @@ header {
 }
 .branding a h1 {
   float: left;
-  font-family: 'CreteRoundRegular', sans-serif;
+  font-family: 'Titillium', sans-serif;
   font-size: 1.5em;
   font-weight: normal;
   margin: 7px 0 0;
@@ -310,6 +309,7 @@ header {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
 }
 .admin .user_info {
+  padding-top: 8px;
   display: inline;
   float: left;
   margin: 0 1.0416666666666665%;
@@ -318,17 +318,13 @@ header {
 }
 .admin .user_info h1, .admin .user_info h2 {
   margin: 0;
-  color: #c1c1c1;
-  background: -webkit-gradient(linear, left top, left bottom, from(#c1c1c1), to(#666666));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
 }
 .admin .user_info h1 {
   font-size: 1.5em;
   line-height: 1.25;
 }
 .admin .user_info h2 {
+  font-family: 'Titillium', sans-serif;
   font-size: 1.125em;
   font-weight: normal;
   line-height: 1.15;
@@ -336,23 +332,38 @@ header {
 .admin .stats {
   text-align: center;
   word-wrap: break-word;
-  color: #c1c1c1;
-  background: -webkit-gradient(linear, left top, left bottom, from(#c1c1c1), to(#666666));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
   display: inline;
   float: left;
   margin: 0 1.0416666666666665%;
   overflow: hidden;
-  width: 14.583333333333334%;
+  width: 47.91666666666667%;
+}
+.admin .stats dl {
+  border: 1px solid #444;
+  float: left;
+  margin: 0 10px 0 0;
+  width: 30%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #111111;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(top, #333333, #111111);
+  background-image: -ms-linear-gradient(top, #333333, #111111);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #111111));
+  background-image: -webkit-linear-gradient(top, #333333, #111111);
+  background-image: -o-linear-gradient(top, #333333, #111111);
+  background-image: linear-gradient(top, #333333, #111111);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
 }
 .admin .stats dt {
-  font-family: 'CreteRoundRegular', sans-serif;
-  font-size: 1.5625em;
-  padding: 5px 0;
+  font-family: 'Titillium', sans-serif;
+  font-size: 1.4375em;
+  letter-spacing: 0.05em;
+  padding: 10px 0 3px;
 }
 .admin .stats dd {
+  padding-bottom: 5px;
   margin: 0;
 }
 .user_list {
@@ -369,11 +380,11 @@ header {
   text-shadow: 0 2px 0 #111111;
 }
 .user_list h1 {
-  font-family: 'CreteRoundRegular', sans-serif;
+  font-family: 'Titillium', sans-serif;
   font-size: 1.25em;
   font-weight: normal;
   line-height: .25;
-  padding: 0 2%;
+  padding: 7px 2% 0;
   text-align: center;
 }
 .user_list ul, li {
@@ -491,6 +502,7 @@ ul.users .avatar {
   line-height: 1.25;
 }
 .selected_user .user_info h2 {
+  font-family: 'Titillium', sans-serif;
   font-size: 1em;
   font-weight: normal;
   line-height: 1.15;
@@ -502,10 +514,30 @@ ul.users .avatar {
   float: left;
   margin: 0 1.0416666666666665%;
   overflow: hidden;
-  width: 14.583333333333334%;
+  width: 47.91666666666667%;
+}
+.selected_user .stats dl {
+  border: 1px solid #444;
+  float: left;
+  margin: 0 10px 0 0;
+  padding: 5px 0;
+  width: 28%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #111111;
+  background-repeat: repeat-x;
+  background-image: -moz-linear-gradient(top, #333333, #111111);
+  background-image: -ms-linear-gradient(top, #333333, #111111);
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #333333), color-stop(100%, #111111));
+  background-image: -webkit-linear-gradient(top, #333333, #111111);
+  background-image: -o-linear-gradient(top, #333333, #111111);
+  background-image: linear-gradient(top, #333333, #111111);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#333333', endColorstr='#111111', GradientType=0);
 }
 .selected_user .stats dt {
-  font-size: 1em;
+  font-family: 'Titillium', sans-serif;
+  font-size: 1.25em;
   padding: 0;
 }
 .selected_user .stats dd {
