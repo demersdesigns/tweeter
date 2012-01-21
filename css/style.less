@@ -29,9 +29,9 @@ body{
 
 //Fonts
 @font-face {
-  font-family: 'CreteRoundRegular';
-  src: url('../fonts/CreteRound_Regular.eot');
-  src: url('../CreteRound_Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/CreteRound_Regular.woff') format('woff'), url('../fonts/CreteRound_Regular.ttf') format('truetype'), url('../fonts/CreteRound_Regular.svg#CreteRoundRegular') format('svg');
+  font-family: 'Titillium';
+  src: url('../fonts/TitilliumText22L002.eot');
+  src: url('../fonts/TitilliumText22L002.eot?#iefix') format('embedded-opentype'), url('../fonts/TitilliumText22L002.woff') format('woff'), url('../fonts/TitilliumText22L002.ttf') format('truetype'), url('../fonts/TitilliumText22L002.svg#TitilliumText22L002') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -76,7 +76,7 @@ input[type=button], .button{
   border: none;
   color: #222;
   cursor: pointer;
-  font-family: 'CreteRoundRegular', sans-serif;
+  font-family: 'Titillium', sans-serif;
   font-size: 0.9375em;
   padding: 3px 12px;
   text-decoration: none;
@@ -85,7 +85,6 @@ input[type=button], .button{
 }
 .blue{
   box-shadow: inset 0 1px 0 0 #4ea7da;
-  text-shadow: 0 1px 0 #ccc;
 
   .grad-vert(#3c8ed0, #4ea7da);
 
@@ -144,7 +143,7 @@ header{
   
   h1{
     float: left;
-    font-family: 'CreteRoundRegular', sans-serif;
+    font-family: 'Titillium', sans-serif;
     font-size: 1.5em;
     font-weight: normal;
     margin: 7px 0 0;
@@ -171,11 +170,11 @@ header{
   
 }
 
-.admin .user_info{  
+.admin .user_info{
+  padding-top: 8px;
+ 
   h1, h2{
     margin: 0;
-
-    .grad-text(#c1c1c1, #666);
   }
   
   h1{
@@ -184,6 +183,7 @@ header{
   }
   
   h2{
+    font-family: 'Titillium', sans-serif;
     font-size: 1.125em;
     font-weight: normal;
     line-height: 1.15;
@@ -195,17 +195,29 @@ header{
 .admin .stats{
   text-align: center;
   word-wrap:break-word;
-  .grad-text(#c1c1c1, #666);
-
-  dt{
-    font-family: 'CreteRoundRegular', sans-serif;
-    font-size: 1.5625em;
-    padding: 5px 0;
+  
+  dl{
+    border: 1px solid #444;
+    float: left;
+    margin: 0 10px 0 0;
+    width: 30%;
+    .border-radius(5px);
+    .grad-vert(#333, #111);
   }
 
-  dd{margin: 0;}
+  dt{
+    font-family: 'Titillium', sans-serif;
+    font-size: 1.4375em;
+    letter-spacing: 0.05em;
+    padding: 10px 0 0;
+  }
 
-  .column(2);
+  dd{
+    padding-bottom: 5px;
+    margin: 0;
+  }
+
+  .column(6);
 }
 
 .user_list{
@@ -218,11 +230,11 @@ header{
 }
 
 .user_list h1{
-  font-family: 'CreteRoundRegular', sans-serif;
+  font-family: 'Titillium', sans-serif;
   font-size: 1.25em;
   font-weight: normal;
   line-height: .25;
-  padding: 0 2%;
+  padding: 7px 2% 0;
   text-align: center;
 }
 
@@ -285,6 +297,7 @@ ul.users .avatar{margin-top: 5px;}
   }
   
   h2{
+    font-family: 'Titillium', sans-serif;
     font-size: 1em;
     font-weight: normal;
     line-height: 1.15;
@@ -298,14 +311,29 @@ ul.users .avatar{margin-top: 5px;}
   text-align: center;
   word-wrap:break-word;
   
+  dl{
+    border: 1px solid #444;
+    float: left;
+    margin: 0 10px 0 0;
+    padding: 5px 0;
+    width: 28%;
+    .border-radius(5px);
+    .grad-vert(#333, #111);
+  }
+  
   dt{
-  font-size: 1em;
+  font-family: 'Titillium', sans-serif;
+  font-size: 1.25em;
   padding: 0;
   }
 
-  dd{margin: 0;}
+  dd{
+    font-size: 0.875em;
+    line-height: 1;
+    margin: 0;
+  }
 
-  .column(2);
+  .column(6);
 }
 
 .latest_tweets{padding: 0;}

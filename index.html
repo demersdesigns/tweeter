@@ -34,18 +34,20 @@
         <h1 data-bind="text: loggedIn_name"></h1>
         <h2>@<span data-bind="text: loggedIn_screen_name"></span></h2>
       </div>
-      <dl class="stats">
-        <dt data-bind="text: loggedIn_followers_count"></dt>
-        <dd>followers</dd>
-      </dl>
-      <dl class="stats">
-        <dt data-bind="text: loggedIn_friends_count"></dt>
-        <dd>following</dd>
-      </dl>
-      <dl class="stats">
-        <dt data-bind="text: loggedIn_statuses_count"></dt>
-        <dd>tweets</dd>
-      </dl>
+      <div class="stats">
+        <dl>
+          <dt data-bind="text: loggedIn_followers_count"></dt>
+          <dd>followers</dd>
+        </dl>
+        <dl>
+          <dt data-bind="text: loggedIn_friends_count"></dt>
+          <dd>following</dd>
+        </dl>
+        <dl>
+          <dt data-bind="text: loggedIn_statuses_count"></dt>
+          <dd>tweets</dd>
+        </dl>
+      </div>
     </section><!-- admin -->
     <section class="user_list">
       <h1>20 People you follow</h1>
@@ -63,18 +65,20 @@
           <h1 data-bind="text: current_name"></h1>
           <h2>@<span data-bind="text: current_screen_name"></span></h2>
         </div>
-        <dl class="stats">
-          <dt data-bind="text: current_followers_count"></dt>
-          <dd>followers</dd>
-        </dl>
-        <dl class="stats">
-          <dt data-bind="text: current_friends_count"></dt>
-          <dd>following</dd>
-        </dl>
-        <dl class="stats">
-          <dt data-bind="text: current_statuses_count"></dt>
-          <dd>tweets</dd>
-        </dl>
+        <div class="stats">
+          <dl>
+            <dt data-bind="text: current_followers_count"></dt>
+            <dd>followers</dd>
+          </dl>
+          <dl>
+            <dt data-bind="text: current_friends_count"></dt>
+            <dd>following</dd>
+          </dl>
+          <dl>
+            <dt data-bind="text: current_statuses_count"></dt>
+            <dd>tweets</dd>
+          </dl>
+        </div>
       </div>
       <ul class="latest_tweets" data-bind="foreach: latestTweets">
         <li class="message_block">
