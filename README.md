@@ -17,6 +17,8 @@ CSS was written using the LESS framework and compiled using the LESS.app applica
 The site is modeled with MVVM in mind and utilizes the Knockout.js framework for local model storage as well as templating.
 + http://knockoutjs.com/
 
+[Preview Link](http://demersdesigns.github.com/tweeter/)
+
 Author
 -------
 
